@@ -50,8 +50,9 @@ public class PointsService extends Object {
         }
     }
 
-    public HashMap<String, Integer> deductPoints(int targetPoints) throws PointsServiceException {
-        HashMap<String, Integer> rtn = new HashMap<>();
+    public List<Transaction> deductPoints(int targetPoints) throws PointsServiceException {
+        HashMap<String, Integer> deductionMap = new HashMap<>();
+        List<Transaction> rtn = new ArrayList<>();
 
         if (balanceMap.size() == 0) {
             if (targetPoints == 0) {
@@ -67,14 +68,19 @@ public class PointsService extends Object {
             Integer deductionPoints = points >= targetPoints ? targetPoints : points;
 
             try {
-                addToDeductionMap(rtn, payerName, -deductionPoints);
+                addToDeductionMap(deductionMap, payerName, -deductionPoints);
             } catch (PointsServiceException e) {
                 throw e;
             }
 
             if (points >= targetPoints) {
-                for (String key : rtn.keySet()) {
-                    addToBalance(key, rtn.get(key));
+                for (String key : deductionMap.keySet()) {
+                    rtn.add(new Transaction.Builder()
+                            .payerName(key)
+                            .points(deductionMap.get(key))
+                            .transactionDate(new Date())
+                            .build());
+                    addToBalance(key, deductionMap.get(key));
                 }
                 updatedValue = points - targetPoints;
                 historyStartIndex = i;

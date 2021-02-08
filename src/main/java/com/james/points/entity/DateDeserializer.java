@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class DateHandler extends StdDeserializer<Date> {
-    public DateHandler() {
+public class DateDeserializer extends StdDeserializer<Date> {
+    public DateDeserializer() {
         this(null);
     }
-    public DateHandler(Class<?> clazz) {
+    public DateDeserializer(Class<?> clazz) {
         super(clazz);
     }
     @Override
