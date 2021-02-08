@@ -1,0 +1,5 @@
+com/james/points/services/PointsService.class
+com/james/points/servlet/PointsServlet.class
+com/james/points/entity/Transaction.class
+com/james/points/servlet/BalanceServlet.class
+com/james/points/services/PointsServiceException.class
