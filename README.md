@@ -28,7 +28,7 @@ There are three routes to achieve the goals in this exercise
   Use GET method to access "http://localhost:8080/points/ps?targetPoints=5000", parameter targetPoints is to set the desired points to be deducted
 3.Return point balance per user that would list all positive points per payer
   Use GET method to access "http://localhost:8080/points/balance", no parameter is required
-### Easy way to test this web service
+## Easy way to test this web service
 Since there is no front-end pages to display the response from this web service. An easy way to test the web service is to use postman. The postman collection is stored under postman directory. After the server is launched, launch postman and press "import" at the top left conner to import this collection. In this collection, there are 7 sample requests to test the goal of three routes. Once it is imported, press "send" button for each request to test. 
 
 Response result is shown at the bottom dialogue in postman application. TargetPoints parameter can be edited on the Params tag in the middle dialogue for deduction request. Transaction data can be edited on the Body tag in the middle dialogue for add request.
